@@ -14,11 +14,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy file
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-        with:
-          server: home562576484.1and1-data.host
-          username: ${{secrets.ftp_username}}
-          password: ${{ secrets.ftp_password }}
+        uses: SamKirkland/FTP-Deploy-Action@2.0.0
+        env:
+          FTP_SERVER: home562576484.1and1-data.host
+          FTP_USERNAME: ${{secrets.ftp_username}}
+          FTP_PASSWORD: ${{ secrets.ftp_password }}
           local_path: './*'
+          port: 22
           remote_path: '/site/IS436/lab5'
           sftp_only: true
